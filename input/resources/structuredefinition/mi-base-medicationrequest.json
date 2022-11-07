@@ -1,0 +1,131 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "mi-base-medicationrequest",
+	"meta": {
+		"versionId": "5",
+		"lastUpdated": "2022-11-04T00:21:40.352+00:00",
+		"source": "#87maHmvZLfFj4tGy"
+	},
+	"url": "http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-medicationrequest",
+	"version": "0.0.1",
+	"name": "MIBaseMedicationRequestProfile",
+	"title": "MI Base MedicationRequest Profile",
+	"status": "active",
+	"date": "2022-10-28",
+	"publisher": "ezCaretech",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "MedicationRequest",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "MedicationRequest",
+				"path": "MedicationRequest"
+			},
+			{
+				"id": "MedicationRequest.status",
+				"path": "MedicationRequest.status",
+				"short": "약물처방 상태",
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationRequest.intent",
+				"path": "MedicationRequest.intent",
+				"short": "약물처방 의도",
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationRequest.medication[x]",
+				"path": "MedicationRequest.medication[x]",
+				"short": "처방 약품 정보",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://build.fhir.org/ig/ezcaretech/mi-base/StructionDefinition/mi-base-medication"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationRequest.subject",
+				"path": "MedicationRequest.subject",
+				"short": "내원 환자 정보",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://build.fhir.org/ig/ezcaretech/mi-base/StructionDefinition/mi-base-patient"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationRequest.encounter",
+				"path": "MedicationRequest.encounter",
+				"short": "내원 정보",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://build.fhir.org/ig/ezcaretech/mi-base/StructionDefinition/mi-base-encounter"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationRequest.authoredOn",
+				"path": "MedicationRequest.authoredOn",
+				"short": "처방일자",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationRequest.dosageInstruction",
+				"path": "MedicationRequest.dosageInstruction",
+				"short": "약물 투여 지시",
+				"min": 1,
+				"max": "*"
+			},
+			{
+				"id": "MedicationRequest.dosageInstruction.text",
+				"path": "MedicationRequest.dosageInstruction.text",
+				"short": "용법(SIG)",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationRequest.dosageInstruction.timing",
+				"path": "MedicationRequest.dosageInstruction.timing",
+				"short": "투여 시기",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationRequest.dosageInstruction.route",
+				"path": "MedicationRequest.dosageInstruction.route",
+				"short": "투여 경로",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationRequest.dosageInstruction.doseAndRate",
+				"path": "MedicationRequest.dosageInstruction.doseAndRate",
+				"short": "처방 약물 용량",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			}
+		]
+	}
+}

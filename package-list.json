@@ -1,0 +1,13 @@
+{
+	"list": [
+		{
+			"status": "ci-build",
+			"version": "current",
+			"path": "http://build.fhir.org/ig/ezcaretech/mi-base/ImplementationGuide/ezcaretech.mi.base",
+			"desc": "tbd",
+			"fhirversion": "4.0.1"
+		}
+	],
+	"title": "ezCaretech MI Base",
+	"canonical": "http://build.fhir.org/ig/ezcaretech/mi-base"
+}

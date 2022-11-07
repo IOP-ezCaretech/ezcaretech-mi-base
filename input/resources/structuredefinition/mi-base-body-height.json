@@ -1,0 +1,113 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "mi-base-body-height",
+	"meta": {
+		"versionId": "5",
+		"lastUpdated": "2022-11-01T00:47:04.771+00:00",
+		"source": "#BgGsjng32c2HsDru"
+	},
+	"url": "http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-body-height",
+	"version": "0.0.1",
+	"name": "MIBaseBodyHeightProfile",
+	"title": "MI Base Body Height Profile",
+	"status": "active",
+	"date": "2022-10-28",
+	"publisher": "ezCaretech",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Observation",
+	"baseDefinition": "http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-vital-signs",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Observation",
+				"path": "Observation"
+			},
+			{
+				"id": "Observation.code",
+				"path": "Observation.code",
+				"short": "신장 측정 코드",
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"patternCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "8302-2"
+						}
+					]
+				},
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.value[x]",
+				"path": "Observation.value[x]",
+				"short": "측정값",
+				"type": [
+					{
+						"code": "Quantity"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.value[x].value",
+				"path": "Observation.value[x].value",
+				"short": "측정값",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "decimal"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.value[x].unit",
+				"path": "Observation.value[x].unit",
+				"short": "측정 단위 텍스트",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.value[x].system",
+				"path": "Observation.value[x].system",
+				"short": "측정 단위 코드체계 식별자",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "uri"
+					}
+				],
+				"fixedUri": "http://unitsofmeasure.org",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.value[x].code",
+				"path": "Observation.value[x].code",
+				"short": "측정 단위 코드값",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "code"
+					}
+				],
+				"mustSupport": true
+			}
+		]
+	}
+}

@@ -1,0 +1,109 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "mi-base-encounter",
+	"meta": {
+		"versionId": "8",
+		"lastUpdated": "2022-11-04T01:41:54.372+00:00",
+		"source": "#HnpuW30ZqmQASPFl"
+	},
+	"url": "http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-encounter",
+	"version": "0.0.1",
+	"name": "MIBaseEncounterProfile",
+	"title": "MI Base Encounter Profile",
+	"status": "active",
+	"date": "2022-10-28",
+	"publisher": "ezCaretech",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Encounter",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Encounter",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Encounter",
+				"path": "Encounter"
+			},
+			{
+				"id": "Encounter.status",
+				"path": "Encounter.status",
+				"short": "내원 상태: planned | arrived | triaged | in-progress | onleave | finished | cancelled +",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Encounter.class",
+				"path": "Encounter.class",
+				"short": "내원 구분",
+				"mustSupport": true
+			},
+			{
+				"id": "Encounter.subject",
+				"path": "Encounter.subject",
+				"short": "내원 환자 정보",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://build.fhir.org/ig/ezcaretech/mi-base/StructionDefinition/mi-base-patient"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Encounter.participant",
+				"path": "Encounter.participant",
+				"short": "내원 참여 의료인",
+				"mustSupport": true
+			},
+			{
+				"id": "Encounter.participant.type",
+				"path": "Encounter.participant.type",
+				"short": "내원 참여 의료인 역할 유형",
+				"mustSupport": true
+			},
+			{
+				"id": "Encounter.participant.individual",
+				"path": "Encounter.participant.individual",
+				"short": "내원 참여 의료인",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-practitionerrole"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Encounter.period",
+				"path": "Encounter.period",
+				"short": "내원일",
+				"mustSupport": true
+			},
+			{
+				"id": "Encounter.location",
+				"path": "Encounter.location"
+			},
+			{
+				"id": "Encounter.serviceProvider",
+				"path": "Encounter.serviceProvider",
+				"short": "진료과",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://build.fhir.org/ig/ezcaretech/mi-base/StructionDefinition/mi-base-organization"
+						]
+					}
+				]
+			}
+		]
+	}
+}

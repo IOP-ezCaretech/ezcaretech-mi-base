@@ -1,0 +1,241 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "mi-base-blood-pressure",
+	"meta": {
+		"versionId": "5",
+		"lastUpdated": "2022-11-01T00:48:08.861+00:00",
+		"source": "#tSluCxc5oilJ9WvO"
+	},
+	"url": "http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-blood-pressure",
+	"version": "0.0.1",
+	"name": "MIBaseBloodPressureProfile",
+	"title": "MI Base Blood Pressure Profile",
+	"status": "active",
+	"date": "2022-10-28",
+	"publisher": "ezCaretech",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Observation",
+	"baseDefinition": "http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-vital-signs",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Observation",
+				"path": "Observation"
+			},
+			{
+				"id": "Observation.code",
+				"path": "Observation.code",
+				"short": "혈압 측정 코드",
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"patternCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "85354-9"
+						}
+					]
+				},
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component",
+				"path": "Observation.component",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "code"
+						}
+					],
+					"ordered": false,
+					"rules": "open"
+				},
+				"min": 2,
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:systolic",
+				"path": "Observation.component",
+				"sliceName": "systolic",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:systolic.code",
+				"path": "Observation.component.code",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"patternCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "8480-6"
+						}
+					]
+				},
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:systolic.value[x]",
+				"path": "Observation.component.value[x]",
+				"type": [
+					{
+						"code": "Quantity"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:systolic.value[x].value",
+				"path": "Observation.component.value[x].value",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "decimal"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:systolic.value[x].unit",
+				"path": "Observation.component.value[x].unit",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:systolic.value[x].system",
+				"path": "Observation.component.value[x].system",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "uri"
+					}
+				],
+				"fixedUri": "http://unitsofmeasure.org",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:systolic.value[x].code",
+				"path": "Observation.component.value[x].code",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "code"
+					}
+				],
+				"fixedCode": "mm[Hg]",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:diastolic",
+				"path": "Observation.component",
+				"sliceName": "diastolic",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:diastolic.code",
+				"path": "Observation.component.code",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"patternCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://loinc.org",
+							"code": "8462-4"
+						}
+					]
+				},
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:diastolic.value[x]",
+				"path": "Observation.component.value[x]",
+				"type": [
+					{
+						"code": "Quantity"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:diastolic.value[x].value",
+				"path": "Observation.component.value[x].value",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "decimal"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:diastolic.value[x].unit",
+				"path": "Observation.component.value[x].unit",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:diastolic.value[x].system",
+				"path": "Observation.component.value[x].system",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "uri"
+					}
+				],
+				"fixedUri": "http://unitsofmeasure.org",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.component:diastolic.value[x].code",
+				"path": "Observation.component.value[x].code",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "code"
+					}
+				],
+				"fixedCode": "mm[Hg]",
+				"mustSupport": true
+			}
+		]
+	}
+}

@@ -1,0 +1,100 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "mi-base-condition",
+	"meta": {
+		"versionId": "7",
+		"lastUpdated": "2022-11-04T00:19:16.012+00:00",
+		"source": "#bblhQanWuNTwOLqZ"
+	},
+	"url": "http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-condition",
+	"version": "0.0.1",
+	"name": "MIBaseConditionProfile",
+	"title": "MI Base Condition Profile",
+	"status": "active",
+	"date": "2022-10-28",
+	"publisher": "ezCaretech",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Condition",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Condition",
+				"path": "Condition"
+			},
+			{
+				"id": "Condition.clinicalStatus",
+				"path": "Condition.clinicalStatus",
+				"short": "현재 상태: active | recurrence | relapse | inactive | remission | resolved",
+				"mustSupport": true
+			},
+			{
+				"id": "Condition.verificationStatus",
+				"path": "Condition.verificationStatus",
+				"short": "검증 상태: unconfirmed | provisional | differential | confirmed | refuted | entered-in-error",
+				"mustSupport": true
+			},
+			{
+				"id": "Condition.category",
+				"path": "Condition.category",
+				"short": "진단 및 주호소 범주: problem-list-item | encounter-diagnosis",
+				"mustSupport": true
+			},
+			{
+				"id": "Condition.code",
+				"path": "Condition.code",
+				"short": "진단 및 주호소 코드",
+				"mustSupport": true
+			},
+			{
+				"id": "Condition.subject",
+				"path": "Condition.subject",
+				"short": "내원 환자 정보",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://build.fhir.org/ig/ezcaretech/mi-base/StructionDefinition/mi-base-patient"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Condition.encounter",
+				"path": "Condition.encounter",
+				"short": "내원 정보",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://build.fhir.org/ig/ezcaretech/mi-base/StructionDefinition/mi-base-encounter"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Condition.recorder",
+				"path": "Condition.recorder",
+				"short": "내원 참여 의료인",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://build.fhir.org/ig/ezcaretech/mi-base/StructionDefinition/mi-base-practitionerrole"
+						]
+					}
+				],
+				"mustSupport": true
+			}
+		]
+	}
+}

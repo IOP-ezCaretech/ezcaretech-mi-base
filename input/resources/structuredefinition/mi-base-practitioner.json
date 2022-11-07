@@ -1,0 +1,107 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "mi-base-practitioner",
+	"meta": {
+		"versionId": "4",
+		"lastUpdated": "2022-11-04T00:22:57.090+00:00",
+		"source": "#qzfhrUOUAstgMtoc"
+	},
+	"url": "http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-practitioner",
+	"version": "0.0.1",
+	"name": "MIBasePractitionerProfile",
+	"title": "MI Base Practitioner Profile",
+	"status": "active",
+	"date": "2022-10-28",
+	"publisher": "ezCaretech",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Practitioner",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Practitioner",
+				"path": "Practitioner"
+			},
+			{
+				"id": "Practitioner.name",
+				"path": "Practitioner.name",
+				"short": "의료진 성명",
+				"min": 1,
+				"max": "*",
+				"mustSupport": true
+			},
+			{
+				"id": "Practitioner.name.text",
+				"path": "Practitioner.name.text",
+				"short": "의료진 성명(전체)",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Practitioner.name.family",
+				"path": "Practitioner.name.family",
+				"short": "의료진 성명(성)"
+			},
+			{
+				"id": "Practitioner.name.given",
+				"path": "Practitioner.name.given",
+				"short": "의료진 성명(이름)"
+			},
+			{
+				"id": "Practitioner.qualification",
+				"path": "Practitioner.qualification",
+				"short": "의료진 면허정보"
+			},
+			{
+				"id": "Practitioner.qualification.identifier",
+				"path": "Practitioner.qualification.identifier",
+				"short": "면허 식별체계 정보"
+			},			
+			{
+				"id": "Practitioner.qualification.identifier.system",
+				"path": "Practitioner.qualification.identifier.system",
+				"short": "면허 식별체계 식별자",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Practitioner.qualification.identifier.value",
+				"path": "Practitioner.qualification.identifier.value",
+				"short": "면허번호",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Practitioner.qualification.code",
+				"path": "Practitioner.qualification.code",
+				"short": "면허종류"
+			},
+			{
+				"id": "Practitioner.qualification.code.coding",
+				"path": "Practitioner.qualification.code.coding",
+				"short": "정의된 코드"
+			},
+			{
+				"id": "Practitioner.qualification.code.coding.system",
+				"path": "Practitioner.qualification.code.coding.system",
+				"short": "면허종류 식별자"
+			},
+			{
+				"id": "Practitioner.qualification.code.coding.code",
+				"path": "Practitioner.qualification.code.coding.code",
+				"short": "면허종류 코드"
+			},
+			{
+				"id": "Practitioner.qualification.code.coding.display",
+				"path": "Practitioner.qualification.code.coding.display",
+				"short": "면허종류 명칭"
+			}
+		]
+	}
+}

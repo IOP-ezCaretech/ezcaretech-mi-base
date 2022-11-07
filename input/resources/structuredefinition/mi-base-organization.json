@@ -1,0 +1,178 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "mi-base-organization",
+	"meta": {
+		"versionId": "32",
+		"lastUpdated": "2022-11-04T04:22:51.866+00:00",
+		"source": "#lgK4JLLmSDmS7Taa"
+	},
+	"url": "http://build.fhir.org/ig/ezcaretech/mi-base/StructureDefinition/mi-base-organization",
+	"version": "0.0.1",
+	"name": "MIBaseOrganizationProfile",
+	"title": "MI Base Organization Profile",
+	"status": "active",
+	"date": "2022-10-28",
+	"publisher": "ezCaretech",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Organization",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Organization",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Organization",
+				"path": "Organization"
+			},
+			{
+				"id": "Organization.identifier",
+				"path": "Organization.identifier",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "system"
+						}
+					],
+					"ordered": false,
+					"rules": "open"
+				}
+			},
+			{
+				"id": "Organization.identifier:KRNPI",
+				"path": "Organization.identifier",
+				"sliceName": "KRNPI",
+				"short": "요양기관기호 식별자",
+				"mustSupport": true
+			},
+			{
+				"id": "Organization.identifier:KRNPI.system",
+				"path": "Organization.identifier.system",
+				"short": "요양기관기호 식별체계",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "uri"
+					}
+				],
+				"fixedUri": "https://hira.or.kr/knpi",
+				"mustSupport": true
+			},
+			{
+				"id": "Organization.identifier:KRNPI.value",
+				"path": "Organization.identifier.value",
+				"short": "요양기관기호",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Organization.type",
+				"path": "Organization.type",
+				"short": "기관구분(진료과 구분)",
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Organization.type.coding",
+				"path": "Organization.type.coding",
+				"type": [
+					{
+						"code": "Coding"
+					}
+				]
+			},
+			{
+				"id": "Organization.type.coding.system",
+				"path": "Organization.type.coding.system",
+				"short": "의료기관 종별 코드 식별체계",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "uri"
+					}
+				],
+				"fixedUri": "https://hira.or.kr/CodeSystem/organization-type",
+				"mustSupport": true
+			},
+			{
+				"id": "Organization.type.coding.code",
+				"path": "Organization.type.coding.code",
+				"short": "기관구분 코드",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "code"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Organization.type.coding.display",
+				"path": "Organization.type.coding.display",
+				"short": "기관구분 코드명",
+				"type": [
+					{
+						"code": "string"
+					}
+				]
+			},
+			{
+				"id": "Organization.name",
+				"path": "Organization.name",
+				"short": "기관명",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Organization.telecom",
+				"path": "Organization.telecom",
+				"short": "의료기관 연락처",
+				"type": [
+					{
+						"code": "ContactPoint"
+					}
+				]
+			},
+			{
+				"id": "Organization.telecom.system",
+				"path": "Organization.telecom.system",
+				"short": "연락처 종류 : phone | fax | email | pager | url | sms | other"
+			},
+			{
+				"id": "Organization.telecom.value",
+				"path": "Organization.telecom.value",
+				"short": "연락처"
+			},
+			{
+				"id": "Organization.address",
+				"path": "Organization.address",
+				"short": "의료기관 주소"
+			},
+			{
+				"id": "Organization.address.text",
+				"path": "Organization.address.text",
+				"short": "의료기관 주소 텍스트"
+			},
+			{
+				"id": "Organization.address.postalCode",
+				"path": "Organization.address.postalCode",
+				"short": "우편번호"
+			}
+		]
+	}
+}
